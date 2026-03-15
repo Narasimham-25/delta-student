@@ -12,7 +12,7 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 
 const session = require("express-session");
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo').default;
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -56,9 +56,9 @@ const store = MongoStore.create({
     touchAfter: 24 * 3600,
 });
 
-store.on("error", ()=>{
+store.on("error", (err)=>{
     console.log("ERROR in MONGO SESSION STORE", err);
-})
+});
 
 const sessionOptions = {
     store,
@@ -113,6 +113,8 @@ app.use((err,req,res,next) =>{
     //res.status(statusCode).send(message);
 });
 
-app.listen(8080, () => {
-    console.log("server is listening to port 8080");
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`server is listening on port ${PORT}`);
 });
