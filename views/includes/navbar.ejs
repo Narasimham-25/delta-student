@@ -21,9 +21,27 @@
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
   }
+
+  @media (max-width: 768px) {
+  .navbar-collapse {
+    position: absolute;   /* overlays content */
+    top: 56px;            /* below navbar height */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1050;
+    padding: 1rem;
+  }
+
+  .search-inp,
+  .search-btn {
+    width: 100%;          /* stack search vertically */
+    margin-bottom: 0.5rem;
+  }
+}
 </style>
 
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md bg-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
